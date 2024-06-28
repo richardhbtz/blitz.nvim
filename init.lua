@@ -10,11 +10,8 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
         lazypath,
     })
 end
+
 vim.opt.rtp:prepend(lazypath)
-
--- require("richvim.magik")
-
---
 
 require("custom.blitz")
 require("lazy").setup(require("blitz.plugins"))

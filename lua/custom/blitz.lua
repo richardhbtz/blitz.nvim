@@ -1,36 +1,33 @@
 M = {
-    -- greeter
-    greeter_open_on_launch = false,
-    greeter_message = true,
-    greeter_ascii = "krakedking",
+	-- greeter
+	greeter_open_on_launch = true,
+	greeter_message = true,
+	greeter_ascii = "krakedking",
 
-    -- file explorer
-    tree_open_on_launch = true, -- will be ignored if greeter is enabled
-    tree_on_the_left = true,
+	-- file explorer
+	tree_open_on_launch = false, -- will be ignored if greeter is enabled
+	tree_on_the_left = true,
 
-    -- editor
-    relative_numbers = true,
+	-- editor
+	relative_numbers = true,
 
-    -- theming
-    theme = "tokyonight",
+	-- theming
+	theme = "gruvchad",
 
-    -- lsp/treesitter/conform
-    languages =
-    {
-        "lua",
-        "cpp",
-        "c"
-    },
+	-- lsp/treesitter/conform
+	languages = {
+		"lua",
+	},
 
-    -- user plugins
-    plugins = {
-        {
-            "richardhbtz/presence.nvim",
-            config = function()
-                require("presence").setup {}
-            end
-        }
-    },
+	-- user plugins
+	plugins = {
+		{
+			"richardhbtz/presence.nvim",
+			config = function()
+				require("presence").setup({})
+			end,
+		},
+	},
 }
 
 return M

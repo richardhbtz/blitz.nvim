@@ -1,3 +1,3 @@
-# richvim
+# blitz
 
-```git clone https://github.com/richardhbtz/richvim ~/.config/nvim --depth 1```
+```git clone https://github.com/richardhbtz/blitz.nvim ~/.config/nvim --depth 1```
