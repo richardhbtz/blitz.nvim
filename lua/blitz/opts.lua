@@ -32,7 +32,7 @@ if cfg.relative_numbers then
 	wo.relativenumber = true
 end
 
-if cfg.tree_open_on_launch and not (cfg.greeter_open_on_launch and vim.fn.argc() > 1) then
+if cfg.tree_open_on_launch and not (cfg.greeter_open_on_launch and vim.fn.argc() == 0) then
 	require("nvim-tree.api").tree.open()
 end
 
