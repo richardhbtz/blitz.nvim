@@ -28,21 +28,19 @@ return {
 		end,
 
 		dependencies = {
-			{
-				"richardhbtz/base46.nvim",
-				config = function()
-					local present, base46 = pcall(require, "base46")
-					if not present then
-						return
-					end
-					local theme_opts = {
-						base = "base46",
-						theme = cfg.theme,
-						transparency = cfg.transparency,
-					}
-					base46.load_theme(theme_opts)
-				end,
-			},
+			"richardhbtz/base46.nvim",
+			config = function()
+				local present, base46 = pcall(require, "base46")
+				if not present then
+					return
+				end
+				local theme_opts = {
+					base = "base46",
+					theme = cfg.theme,
+					transparency = cfg.transparency,
+				}
+				base46.load_theme(theme_opts)
+			end,
 		},
 	},
 
@@ -61,17 +59,7 @@ return {
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			local hooks = require("ibl.hooks")
-			hooks.register(hooks.type.HIGHLIGHT_SETUP, function()
-				vim.api.nvim_set_hl(0, "Base46Line", { fg = require("base46").get_colors("base46", cfg.theme).line })
-			end)
-			hooks.register(hooks.type.SCOPE_HIGHLIGHT, hooks.builtin.scope_highlight_from_extmark)
-			require("ibl").setup({
-				indent = { char = "▏", highlight = "Base46Line" },
-				scope = { char = "▏", highlight = "Base46Line" },
-			})
-		end,
+		config = require("config.ibl"),
 	},
 
 	{
@@ -82,9 +70,11 @@ return {
 	{
 		"nvim-tree/nvim-tree.lua",
 		cmd = { "NvimTreeToggle" },
+
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
+
 		config = require("config.nvimtree"),
 	},
 
@@ -107,18 +97,10 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			{
-				"richardhbtz/lspkind.nvim",
-			},
-
+			"richardhbtz/lspkind.nvim",
 			{
 				"L3MON4D3/LuaSnip",
-				build = (function()
-					if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
-						return
-					end
-					return "make install_jsregexp"
-				end)(),
+				build = "make install_jsregexp",
 				dependencies = {
 					{
 						"rafamadriz/friendly-snippets",

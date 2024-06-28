@@ -1,8 +1,8 @@
 M = {
 	-- greeter
-	greeter_open_on_launch = false,
+	greeter_open_on_launch = true,
 	greeter_message = true,
-	greeter_ascii = "krakedking",
+	greeter_ascii = "hydra",
 
 	-- file explorer
 	tree_open_on_launch = true, -- will be ignored if greeter is enabled
@@ -10,7 +10,7 @@ M = {
 
 	-- editor
 	relative_numbers = true,
-	leader_key = " ",
+	leader_key = " ", -- space
 
 	-- theming
 	theme = "gruvchad",

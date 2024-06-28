@@ -1,7 +1,7 @@
 local cfg = require("custom.blitz")
 
 return function()
-	if not cfg.greeter_open_on_launch then
+	if not cfg.greeter_open_on_launch or vim.fn.argc() > 0 then
 		return
 	end
 
