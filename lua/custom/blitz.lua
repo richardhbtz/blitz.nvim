@@ -10,9 +10,11 @@ M = {
 
 	-- editor
 	relative_numbers = true,
+	leader_key = " ",
 
 	-- theming
 	theme = "gruvchad",
+	theme_transparency = false,
 
 	-- lsp/treesitter/conform
 	languages = {

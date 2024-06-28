@@ -22,10 +22,10 @@ return {
 	},
 
 	{
-		"richardhbtz/nvstl",
+		"richardhbtz/blitzline.nvim",
 
 		config = function()
-			require("nvstl").setup({})
+			require("blitzline").setup({})
 		end,
 
 		dependencies = {
