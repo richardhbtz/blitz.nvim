@@ -39,17 +39,3 @@ end
 require("nvim-treesitter.configs").setup({
 	ensure_installed = get_languages_ts(),
 })
-
-local present, base46 = pcall(require, "base46")
-
-if not present then
-	return
-end
-
-local theme_opts = {
-	base = "base46",
-	theme = cfg.theme,
-	transparency = cfg.transparency,
-}
-
-base46.load_theme(theme_opts)
