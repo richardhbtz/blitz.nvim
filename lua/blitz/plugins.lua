@@ -107,7 +107,9 @@ return {
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			{ "onsails/lspkind.nvim" },
+			{
+				"richardhbtz/lspkind.nvim",
+			},
 
 			{
 				"L3MON4D3/LuaSnip",
