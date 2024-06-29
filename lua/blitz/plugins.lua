@@ -21,6 +21,13 @@ return {
 	},
 
 	{
+		"nvoid-lua/bufferline.lua",
+		config = function()
+			require("bufferline").setup({ kind_icons = true })
+		end,
+	},
+
+	{
 		"richardhbtz/blitzline.nvim",
 
 		config = function()
@@ -30,16 +37,9 @@ return {
 		dependencies = {
 			"richardhbtz/base46.nvim",
 			config = function()
-				local present, base46 = pcall(require, "base46")
-				if not present then
-					return
-				end
-				local theme_opts = {
-					base = "base46",
+				require("base46").load_theme({
 					theme = cfg.theme,
-					transparency = cfg.transparency,
-				}
-				base46.load_theme(theme_opts)
+				})
 			end,
 		},
 	},
