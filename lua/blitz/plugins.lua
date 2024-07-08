@@ -16,12 +16,20 @@ return {
 	},
 
 	{
+		"lewis6991/gitsigns.nvim",
+		event = "User FilePost",
+		config = function()
+			require("gitsigns").setup(require("config.gitsigns"))
+		end,
+	},
+
+	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 	},
 
 	{
-		"nvoid-lua/bufferline.lua",
+		"richardhbtz/blitztabuf.nvim",
 		config = function()
 			require("bufferline").setup({ kind_icons = true })
 		end,
@@ -107,12 +115,34 @@ return {
 			"richardhbtz/lspkind.nvim",
 			{
 				"L3MON4D3/LuaSnip",
-				build = "make install_jsregexp",
+				opts = { history = true, updateevents = "TextChanged,TextChangedI" },
 				dependencies = {
 					{
 						"rafamadriz/friendly-snippets",
 						config = function()
-							require("luasnip.loaders.from_vscode").lazy_load()
+							require("luasnip.loaders.from_vscode").lazy_load({
+								exclude = vim.g.vscode_snippets_exclude or {},
+							})
+							require("luasnip.loaders.from_vscode").lazy_load({
+								paths = vim.g.vscode_snippets_path or "",
+							})
+							require("luasnip.loaders.from_snipmate").load()
+							require("luasnip.loaders.from_snipmate").lazy_load({
+								paths = vim.g.snipmate_snippets_path or "",
+							})
+							require("luasnip.loaders.from_lua").load()
+							require("luasnip.loaders.from_lua").lazy_load({ paths = vim.g.lua_snippets_path or "" })
+
+							vim.api.nvim_create_autocmd("InsertLeave", {
+								callback = function()
+									if
+										require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+										and not require("luasnip").session.jump_active
+									then
+										require("luasnip").unlink_current()
+									end
+								end,
+							})
 						end,
 					},
 				},

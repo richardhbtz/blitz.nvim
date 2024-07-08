@@ -25,7 +25,7 @@ opt.hlsearch = true -- highlight on search
 g.loaded_netrw = 1
 g.loaded_netrwPlugin = 1
 o.expandtab = true
-o.numberwidth = 2
+o.numberwidth = 4
 o.ruler = false
 
 if cfg.relative_numbers then
